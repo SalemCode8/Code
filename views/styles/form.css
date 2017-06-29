@@ -1,0 +1,23 @@
+@charset "utf-8";
+
+body {
+    background-color: #FFFFFF;
+    color: #252525;
+    font-family: "Gill Sans", "Gill Sans MT", "Myriad Pro", "DejaVu Sans Condensed", Helvetica, Arial, sans-serif;
+}
+form {
+    margin-left: 40px;
+}
+
+label {
+    width: 115px;
+    display: inline-block;
+    font-weight: bold;
+}
+[type=submit] {
+    margin-left: 120px;
+}
+.result {
+    font-weight: bold;
+    color: #012773;
+}
