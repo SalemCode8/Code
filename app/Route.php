@@ -1,35 +1,27 @@
 <?php
 
 class Route{
-    public static $vaildRoutes = [];
-    public static function get($route,$function){
-        $url ='';
-//        if(strlen($route) > 2 && strpos($route,'/',0) == 1){ $route = str_replace('/','',$route);}
-        self::$vaildRoutes[] = $route;
-        if(!isset($_GET['url'])){
-            $_GET['url'] = '/';
-        }
-        if($_GET['url'] == $route){
-            echo $function->__invoke();
-        }
-    }
-    public static function post($route,$function){
-        self::$vaildRoutes[] = $route;
-        if(!isset($_GET['url'])){
-            $_GET['url'] = '/';
-        }
-        if($_GET['url'] == $route){
-            $_SERVER['REQUEST_METHOD'] = 'POST';
-            echo $function->__invoke();
-        }
-    }
-    public static function error($error,$function = null){
-        if($error == 404){
-            if(!isset($_GET['url'])){$_GET['url'] = 'index.php';}
+    public static $validRoutes = [];
 
-            if(!in_array($_GET['url'],self::$vaildRoutes)){
-                if($function==null){return view($_GET['url']);}
-                $function->__invoke();
+    public static function get($route,$function){
+        $uri = $_SERVER['REQUEST_URI'];
+        $route = rtrim(ltrim($route,"/"),"/");
+        $uri = rtrim(ltrim($uri,"/"),"/");
+        self::$validRoutes[] = $route;
+        if($route == $uri) {
+            echo $function->__invoke();
+        }
+
+    }
+    public static function error($view = null){
+        $uri = $_SERVER['REQUEST_URI'];
+        $uri = rtrim(ltrim($uri,"/"),"/");
+        if(!in_array($uri,self::$validRoutes)){
+            header('HTTP/1.0 404 Not Found');
+            if($view == null){
+                echo "404 Page You Are Looking For Isn't exist";
+            }else{
+                return view($view);
             }
         }
     }

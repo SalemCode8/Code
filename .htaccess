@@ -1,12 +1,4 @@
 RewriteEngine On
-# RewriteRule ^([^/]+)/([^/]+)$ index.php?url=$1&username=$2 [L]
-# RewriteRule ^([^/]+)/? index.php?url=$1 [L,QSA]
- <IfModule mod_negotiation.c>
-        Options -MultiViews
-    </IfModule>
 RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(.*)/$ /$1 [L,R=301]
-
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*) index.php?url=$1
+RewriteRule ^ index.php [L]

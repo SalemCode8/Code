@@ -1,21 +1,10 @@
 <?php
-//Route::get('/',function (){
-//    return view('welcomeController@showWelcome');
-//});
-//
-//Route::get('about',function (){
-//    return view('about@showAbout');
-//});
-//
-//Route::get('about/Hi',function (){
-//    return "Say Hi";
-//});
 
-Route::get("form",function (){
-    $_POST['url'] = 'Hi';
-   return view('form');
+
+Route::get('/',function(){
+    return "<h1>MVC Has Been Started</h1>";
 });
 
-Route::post('/',function(){
-    return "index";
+Route::get('greeting',function(){
+    return "<h1>Welcome Back!</h1>";
 });

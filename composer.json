@@ -1,0 +1,10 @@
+{
+    "name": "salemcode8/mvc",
+    "description": "Simple MVC Framework",
+    "keywords": ["cli","php", "mvc", "framework"],
+    "license": "MIT",
+    "version": "0.0.1",
+    "require": {
+        "league/climate": "^3.2"
+    }
+}

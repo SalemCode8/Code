@@ -1,0 +1,48 @@
+#!/usr/bin/env php
+<?php
+
+require_once('vendor/autoload.php');
+
+$climate = new League\CLImate\CLImate;
+$climate->addArt('/vendor/league/climate/src/ASCII');
+$arg = isset($argv[1]) ? $argv[1] : null;
+if($arg){
+    if(strpos($arg,':') !== false){
+        $arg = explode(':',$arg);
+        if($arg[0] =="run"){
+            $climate->green('Server Is Started on <http://localhost:'.$arg[1].'>');
+            exec('php -S 127.0.0.1:'.$arg[1]);
+        }
+    }else{
+    if($arg == 'run'){
+        $climate->green('Server Is Started on <http://localhost:8000>');
+        exec('php -S 127.0.0.1:8000');
+    }else{
+        $climate->draw('404');
+        $climate->br();
+        $climate->backgroundRed('Command You Are Looking for not Found');
+        $climate->br();
+        $climate->green('This is List of Available Commands');
+        $data = [
+            [
+                'Command'       => 'run',
+                'Description'       => 'Command To Start Lite Built in Server',
+            ]
+        ];
+
+        $climate->table($data);
+    }
+    }
+}else{
+    $climate->animation('mvc')->enterFrom('right');
+    $climate->br();
+    $climate->green('This is List of Available Commands');
+    $data = [
+        [
+            'Command'       => 'run',
+            'Description'       => 'Command To Start Lite Built in Server',
+        ]
+    ];
+
+    $climate->table($data);
+}
