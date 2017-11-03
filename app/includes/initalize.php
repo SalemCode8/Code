@@ -1,5 +1,6 @@
 <?php
 
-require 'app/includes/functions.php';
-require './Routes.php';
+require __DIR__.'/functions.php';
+require __DIR__.'/../../Routes.php';
+
 Route::error();
