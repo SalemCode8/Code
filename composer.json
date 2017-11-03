@@ -3,6 +3,7 @@
     "description": "Simple MVC Framework",
     "keywords": ["cli","php", "mvc", "framework"],
     "license": "MIT",
+    "type": "project",
     "version": "0.0.2",
     "require": {
         "league/climate": "^3.2"
