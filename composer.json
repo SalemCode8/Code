@@ -6,6 +6,7 @@
     "type": "project",
     "version": "0.0.2",
     "require": {
+        "php": "^7.0",
         "league/climate": "^3.2"
     }
 }
