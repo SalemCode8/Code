@@ -1,7 +1,7 @@
 {
     "name": "salemcode8/code",
     "description": "Simple MVC Framework",
-    "keywords": ["cli", "php", "mvc", "framework"],
+    "keywords": ["cli", "php", "mvc", "Code", "framework"],
     "license": "MIT",
     "type": "project",
     "version": "0.0.2",
