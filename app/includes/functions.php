@@ -1,7 +1,7 @@
 <?php
 function __autoload($className){
-    if(file_exists(__DIR__.'/../' . $className . '.php')){
-        require __DIR__.'/../' . $className . '.php';
+    if(file_exists(__DIR__.'/../classes/' . $className . '.php')){
+        require __DIR__.'/../classes/' . $className . '.php';
     }else if (file_exists(__DIR__.'/../controllers/' . $className . '.php')){
         require __DIR__.'/../controllers/' . $className . '.php';
     }
