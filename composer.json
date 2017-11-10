@@ -4,7 +4,7 @@
     "keywords": ["cli", "php", "mvc", "Code", "framework"],
     "license": "MIT",
     "type": "project",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "require": {
         "php": "^7.0",
         "league/climate": "^3.2"
