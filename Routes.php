@@ -1,7 +1,7 @@
 <?php
 
 
-Route::get('/',function(){
+Route::get('/', function() {
     $logo = base64Image('images/logo.png');
     $code = Str::startsWith('Code', 'C') ? "Code" : "";
     $markup = <<<DOC
@@ -15,6 +15,6 @@ DOC;
     return $markup;
 });
 
-Route::get('greeting',function(){
+Route::get('greeting', function() {
     return "<h1>Welcome Back!</h1>";
 });
