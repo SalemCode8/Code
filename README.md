@@ -1,4 +1,3 @@
-```markdown
 # Code
 ## Simple MVC Framework
 This is a simple MVC framework designed to make web development easier. It provides a basic structure for building web applications and includes features such as routing, middleware, and database abstraction.
