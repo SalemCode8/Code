@@ -5,42 +5,45 @@ require_once(__DIR__.'/vendor/autoload.php');
 
 $climate = new League\CLImate\CLImate;
 $arg = isset($argv[1]) ? $argv[1] : null;
-if($arg){
-    if(strpos($arg,':') !== false){
-        $arg = explode(':',$arg);
-        if($arg[0] =="run"){
-            $climate->green('Server Is Started on <http://localhost:'.$arg[1].'>');
-            exec('php -S 127.0.0.1:'.$arg[1].' -t ./public');
-        }
-    }else{
-    if($arg == 'run'){
-        $climate->green('Server Is Started on <http://localhost:8000>');
-        exec('php -S 127.0.0.1:8000'.' -t ./public');
-    }else{
-        $climate->br();
-        $climate->backgroundRed('Command You Are Looking for not Found');
-        $climate->br();
-        $climate->green('This is List of Available Commands');
-        $data = [
-            [
-                'Command'       => 'run',
-                'Description'       => 'Command To Start Lite Built in Server',
-            ]
-        ];
 
-        $climate->table($data);
-    }
-    }
-}else{
-    $climate->blue('Welcome In Code Framework');
+function runServer($port) {
+    global $climate;
+    $climate->green('Server Is Started on <http://localhost:'.$port.'>');
+    exec('php -S 127.0.0.1:'.$port.' -t ./public');
+}
+
+function displayCommands() {
+    global $climate;
     $climate->br();
     $climate->green('This is List of Available Commands');
     $data = [
         [
             'Command'       => 'run',
-            'Description'       => 'Command To Start Lite Built in Server',
+            'Description'   => 'Command To Start Lite Built in Server',
         ]
     ];
-
     $climate->table($data);
+}
+
+function displayWelcomeMessage() {
+    global $climate;
+    $climate->blue('Welcome In Code Framework');
+}
+
+if($arg){
+    if(strpos($arg,':') !== false){
+        $arg = explode(':',$arg);
+        if($arg[0] =="run"){
+            runServer($arg[1]);
+        }
+    }else{
+        if($arg == 'run'){
+            runServer('8000');
+        }else{
+            displayCommands();
+        }
+    }
+}else{
+    displayWelcomeMessage();
+    displayCommands();
 }
